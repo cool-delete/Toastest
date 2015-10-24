@@ -69,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void notification() {
+        //        notification.icon = R.mipmap.ic_launcher;
+        //        Notification notification = new Notification();
+        //        notification.tickerText = "注意了，我被扔到狀態欄了";
         NotificationCompat.Builder notification = new NotificationCompat.Builder(MainActivity.this);
         notification.setColor(getResources().getColor(android.R.color.holo_blue_bright));
         notification.setContentTitle("主要标题");
@@ -79,9 +82,6 @@ public class MainActivity extends AppCompatActivity {
         NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         manager.notify(1, mNofitication);
 
-        //        Notification notification = new Notification();
-        //        notification.tickerText = "注意了，我被扔到狀態欄了";
-        //        notification.icon = R.mipmap.ic_launcher;
 
     }
 }

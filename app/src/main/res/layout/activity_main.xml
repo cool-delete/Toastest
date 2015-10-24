@@ -47,14 +47,16 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/show_ToastShort"
         android:text="通知"/>
+
+    <Button
+        android:id="@+id/show_notificationProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/show_ToastLong"
+        android:layout_toEndOf="@+id/showPicToast"
+        android:text="通知进度条"/>
     <!--<Button-->
-    <!--android:id="@+id/show_toastcenter"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="center_horizontal"-->
-    <!--android:text="显示中间toast"/>-->
-    <!--<Button-->
-    <!--android:id="@+id/show_toastcenter"-->
+    <!--android:id="@+id/show_notificationProgressnProgress"-->
     <!--android:layout_width="wrap_content"-->
     <!--android:layout_height="wrap_content"-->
     <!--android:layout_gravity="center_horizontal"-->
