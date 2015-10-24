@@ -19,9 +19,15 @@ public class MainActivity extends AppCompatActivity {
     Button mToastCenter;
     Button mToastPic;
     Button btnNofitication;
+    NotificationCompat.Builder notification = new NotificationCompat.Builder(MainActivity.this);
+    NotificationManager manager;
+    //    myThread oen = new myThread();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        this.manager = manager;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mToastShort = (Button) findViewById(R.id.show_ToastShort);
@@ -66,6 +72,13 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.notification();
             }
         });
+        Button Progress = (Button) findViewById(R.id.show_notificationProgress);
+        Progress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logic();
+            }
+        });
     }
 
 
@@ -73,17 +86,55 @@ public class MainActivity extends AppCompatActivity {
         //        notification.icon = R.mipmap.ic_launcher;
         //        Notification notification = new Notification();
         //        notification.tickerText = "注意了，我被扔到狀態欄了";
-        NotificationCompat.Builder notification = new NotificationCompat.Builder(MainActivity.this);
-        notification.setColor(ContextCompat.getColor(this,android.R.color.holo_red_light));
-        //        notification.setColor(getResources().getColor(android.R.color.holo_blue_bright));
+
+        notification.setColor(ContextCompat.getColor(this, android.R.color.holo_red_light));//兼用包方法
+        //        notification.setColor(getResources().getColor(android.R.color.holo_blue_bright));//方法已过时
         notification.setContentTitle("主要标题");
         notification.setSmallIcon(R.mipmap.ic_launcher);
 
         notification.setContentText("消息主体");
-        Notification mNofitication = notification.build();
-        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(1, mNofitication);
+        //        Notification mNofitication = notification.build();节省内存
+
+        manager.notify(1, notification.build());
 
 
     }
+
+    private void logic() {
+        for (int i = 0; i < 100; i++) {
+            notification.setProgress(100, i, false)
+                    .setDefaults(0);//dialer
+
+            manager.notify(1, notification.build());
+
+            //            oen.start();
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }
+        Toast.makeText(MainActivity.this, "进度完成", Toast.LENGTH_SHORT).show();
+        notification.setContentText("ok")
+                .setDefaults(Notification.DEFAULT_ALL)//dialer
+                .setProgress(0, 0, false);
+        manager.notify(1, notification.build());
+
+    }
+
+    //    class myThread extends Thread {
+    //
+    //        @Override
+    //        public void run() {
+    //            try {
+    //                sleep(1);
+    //            } catch (InterruptedException e) {
+    //                e.printStackTrace();
+    //            }
+    //
+    //
+    //        }
+    //    }
 }
+
