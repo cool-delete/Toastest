@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
     private void logic() {
         for (int i = 0; i < 100; i++) {
             notification.setProgress(100, i, false)
-                    .setDefaults(0);//dialer
+                    .setDefaults(0);//发送消息时不要制造音效震动
 
             manager.notify(1, notification.build());
 
