@@ -4,6 +4,7 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
 import android.view.Gravity;
@@ -73,7 +74,8 @@ public class MainActivity extends AppCompatActivity {
         //        Notification notification = new Notification();
         //        notification.tickerText = "注意了，我被扔到狀態欄了";
         NotificationCompat.Builder notification = new NotificationCompat.Builder(MainActivity.this);
-        notification.setColor(getResources().getColor(android.R.color.holo_blue_bright));
+        notification.setColor(ContextCompat.getColor(this,android.R.color.holo_red_light));
+        //        notification.setColor(getResources().getColor(android.R.color.holo_blue_bright));
         notification.setContentTitle("主要标题");
         notification.setSmallIcon(R.mipmap.ic_launcher);
 
