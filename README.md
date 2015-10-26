@@ -1,0 +1,3 @@
+# Toastest
+意外得知 toast对象用make text方法系统会用this的上下文找到一个view ,才能把字符传进去 如果toast用new方法出来 在调用show方法是会抛出错误的 就是因为没有一个view对象 如果事先用new toast对象 必须要在toast对象的setview方法中给一个view对象 再调用show方法才可以顺利显示 如果此时要用settext方法 它会先通过这个view新建一个textview 如果找到view又或者这个view找不到textview 这个settext方法都会抛出
+This Toast was not created with Toast.makeText().
